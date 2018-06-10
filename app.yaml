@@ -7,6 +7,10 @@ handlers:
   static_files: www/index.html
   upload: www/index.html
 
-- url: /(.*)
-  static_files: www/\1
-  upload: www/(.*)
+- url: /contact
+  static_files: www/contact.html
+  upload: www/contact.html
+
+- url: /about
+  static_files: www/about.html
+  upload: www/about.html
