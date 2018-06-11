@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>InspectX</title>
+    <title>INSPECTX</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -86,21 +86,52 @@
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Phone Number</label>
-                  <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="required" data-validation-required-message="Please enter your phone number.">
+                  <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="required">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Message</label>
-                  <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required" data-validation-required-message="Please enter a message."></textarea>
+                  <label for="car">Vehicle</label>
+                  <select required class="form-control form-control-lg" id="car" rows="5" name="car" required="required">
+                    <option value="">Pick a Vehicle</option>
+                    <option value="acura">Acura</option>
+                    <option value="Audi">Audi</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Ferrari">Ferrari</option>
+                    <option value="Land Rover">Land Rover</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    <option value="Porsche">Porsche</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Vintage porsche">Vintage Porsche</option>
+                  </select>
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                  <label for="location">Location</label>
+                  <select class="form-control form-control-lg" id="location" rows="5" required name="location" required="required">
+                    <option value="">Pick a Location</option>
+                    <option value="LA">Los Angeles Area</option>
+                    <option value="SF Bay">San Francisco Bay Area</option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="South Florida">South Florida</option>
+                    <option value="Greater NY">Greater New York City Area</option>
+                    <option value="Raleigh-Durham Area">Raleigh-Durham Area</option>
+                    <option value="Greater Dallas Area">Greater Boston Area</option>
+                    <option value="Greater San Diego Area">Alabama</option>
+                    <option value="New Jersey">New Jersey</option>
+                    <option value="st louis">St. Louis, MO</option>
+                    <option value="Sprinfrield">Springfield, IL</option>
+                  </select>
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
               <br>
               <div id="success"></div>
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
+              <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary btn-xl" style="color: black;" id="sendMessageButton">Request Inspection</button>
               </div>
             </form>
           </div>
@@ -121,6 +152,20 @@
       </a>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBAFC34aASkgV6yZYtVWhTIUg4jayvW1m0",
+        authDomain: "inspectx-main-site.firebaseapp.com",
+        databaseURL: "https://inspectx-main-site.firebaseio.com",
+        projectId: "inspectx-main-site",
+        storageBucket: "inspectx-main-site.appspot.com",
+        messagingSenderId: "985698318803"
+      };
+      firebase.initializeApp(config);
+    </script>
+
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -131,7 +176,7 @@
 
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+    <script src="js/request.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
