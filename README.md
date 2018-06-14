@@ -6,7 +6,6 @@
 
 ## Requirements
 - [Google Cloud SDK](https://cloud.google.com/sdk/docs/)
-- 
 
 
 ## Installation
@@ -21,9 +20,9 @@ Create and activate virtualenv
     $ virtualenv env 
     $ source env/bin/activate
 
-Install dependencies
+Install dependencies into lib folder for App Engine
 
-    $ pip install -r requirements.txt
+    $ pip install -t lib -r requirements.txt
 
 Run and test the app through the standard GAE environment
 
