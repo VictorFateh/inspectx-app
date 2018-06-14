@@ -5,7 +5,7 @@
 **[Live website](https://www.inspect-x.com/)**
 
 ## Requirements
-- [Google Cloud SDK](https://cloud.google.com/sdk/docs/)
+- [Google Cloud SDK](https://cloud.google.com/sdk/docs/) Python 2.7
 
 
 ## Installation

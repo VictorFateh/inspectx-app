@@ -8,7 +8,8 @@ $(document).ready(function() {
 				email : $('#email').val(),
 				phone : $('#phone').val(),
 				car : $('#car').val(),
-				location : $('#location').val()
+				location : $('#location').val(),
+				date : $('#date').val()
 			},
 			type : 'POST',
 			url : '/process'

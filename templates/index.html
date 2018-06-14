@@ -27,6 +27,8 @@
 
     <link href="/static/css/animatedzebra.css" rel="stylesheet">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -68,7 +70,8 @@
 <section id="contact">
     <div class="container">
         <h2 class="text-center text-uppercase text-secondary mb-0" id="title-start">Set up an inspection</h2>
-        <h2 class="text-center text-uppercase text-secondary mb-0" id="title-complete" style="display: none;">All set!</h2>
+        <h2 class="text-center text-uppercase text-secondary mb-0" id="title-complete" style="display: none;">All
+            set!</h2>
         <h2 class="text-center text-uppercase text-secondary mb-0" id="title-error" style="display: none;">oops</h2>
         <br><br>
         <div class="row">
@@ -136,8 +139,13 @@
                         </div>
                         <hr>
                     </div>
+                    <div class="control-group">
+                        <div class="form-group controls mb-0 pb-2">
+                            <input class="form-control" type="date" id="date">
+                        </div>
+                        <hr>
+                    </div>
                     <br>
-                    <div id="success"></div>
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary btn-xl" style="color: black;"
                                 id="sendMessageButton">Request Inspection
@@ -146,11 +154,12 @@
                 </form>
                 <div id="successAlert" class="alert alert-success text-center" role="alert" style="display:none;"></div>
                 <div class="scene text-center" id="scene" style="display:none;">
-                        <img class="car" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/43033/car.svg" alt=""/>
-                        <img class="poof" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/43033/poof.svg" alt=""/>
-                        <img class="sign" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/43033/sign.svg" alt=""/>
-                        <em>LOADING...</em>
-                    </div>
+                    <img class="car" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/43033/car.svg" alt=""/>
+                    <img class="poof" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/43033/poof.svg" alt=""/>
+                    <img class="sign" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/43033/sign.svg" alt=""/>
+                    <em>LOADING...</em>
+                </div>
+                <br>
                 <div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
             </div>
         </div>
@@ -178,13 +187,8 @@
 <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="/static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-<!-- Contact Form JavaScript -->
-<script src="/static/js/jqBootstrapValidation.js"></script>
-<script src="/static/js/request.js"></script>
-
 <!-- Custom scripts for this template -->
 <script src="/static/js/freelancer.min.js"></script>
-
 
 <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 

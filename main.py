@@ -18,12 +18,20 @@ def contact():
     return render_template('contact.html')
 
 
-@app.route('/email')
+@app.route('/email', methods=['POST'])
 def email():
     name = request.form['name']
     email = request.form['email']
     phone = request.form['phone']
     message = request.form['car']
+
+    if name and email and phone and message:
+        return jsonify(
+            {'name': "Thanks " + name + ", we'll get back to you ASAP"})
+
+    return jsonify(
+        {
+            'error': "Some fields seem to be missing"})
 
 
 @app.route('/process', methods=['POST'])
@@ -33,8 +41,9 @@ def process():
     phone = request.form['phone']
     car = request.form['car']
     location = request.form['location']
+    date = request.form['date']
 
-    if name and email and phone and car and location:
+    if name and email and phone and car and location and date:
         # GOOGLE SHEETS OR FIREBASE LOGIC HERE
 
         return jsonify(
