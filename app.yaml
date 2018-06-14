@@ -3,21 +3,7 @@ api_version: 1
 threadsafe: true
 
 handlers:
-- url: /
-  static_files: www/index.html
-  upload: www/index.html
-
-- url: /about
-  static_files: www/about.html
-  upload: www/about.html
-
-- url: /contact
-  static_files: www/contact.html
-  upload: www/contact.html
-
-- url: /(.*)
-  static_files: www/\1
-  upload: www/(.*)
-
-skip_files:
-  - vendor/
+- url: /static
+  static_dir: static
+- url: /.*
+  script: main.app

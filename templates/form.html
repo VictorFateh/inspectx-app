@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX Example</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+</head>
+<body>
+<div class="container">
+    <br><br><br><br>
+    <form class="form-inline" id="inspection-form">
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Name</label>
+                <input class="form-control" id="name" type="text" placeholder="Name" required="required"
+                       data-validation-required-message="Please enter your name.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Email Address</label>
+                <input class="form-control" id="email" type="email" placeholder="Email Address"
+                       required="required"
+                       data-validation-required-message="Please enter your email address.">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Phone Number</label>
+                <input class="form-control" id="phone" type="tel" placeholder="Phone Number"
+                       required="required">
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label for="car">Vehicle</label>
+                <select required class="form-control form-control-lg" id="car" rows="5" name="car"
+                        required="required">
+                    <option value="">Pick a Vehicle</option>
+                    <option value="acura">Acura</option>
+                    <option value="Audi">Audi</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Ferrari">Ferrari</option>
+                    <option value="Land Rover">Land Rover</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    <option value="Porsche">Porsche</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Vintage porsche">Vintage Porsche</option>
+                </select>
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label for="location">Location</label>
+                <select class="form-control form-control-lg" id="location" rows="5" required name="location"
+                        required="required">
+                    <option value="">Pick a Location</option>
+                    <option value="LA">Los Angeles Area</option>
+                    <option value="SF Bay">San Francisco Bay Area</option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="South Florida">South Florida</option>
+                    <option value="Greater NY">Greater New York City Area</option>
+                    <option value="Raleigh-Durham Area">Raleigh-Durham Area</option>
+                    <option value="Greater Dallas Area">Greater Boston Area</option>
+                    <option value="Greater San Diego Area">Alabama</option>
+                    <option value="New Jersey">New Jersey</option>
+                    <option value="st louis">St. Louis, MO</option>
+                    <option value="Sprinfrield">Springfield, IL</option>
+                </select>
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+        <br>
+        <div id="success"></div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-xl" style="color: black;"
+                    id="sendMessageButton">Request Inspection
+            </button>
+        </div>
+    </form>
+    <br>
+    <div id="successAlert" class="alert alert-success" role="alert" style="display:none;"></div>
+    <div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
+</div>
+</body>
+</html>
