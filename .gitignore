@@ -1,5 +1,4 @@
-vendor/
-*.pdf
 *.pyc
 venv/
 lib/
+.idea/
