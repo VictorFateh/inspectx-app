@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    $('#date').datepicker({
+        maxViewMode: 2,
+        autoclose: true,
+        todayHighlight: true
+    });
+
 	$('form').on('submit', function(event) {
 
 		$.ajax({

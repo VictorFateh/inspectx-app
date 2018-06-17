@@ -8,30 +8,29 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/services')
+@app.route('/about')
 def services():
-    return render_template('services.html')
+    return render_template('about.html')
 
 
-@app.route('/contact')
+@app.route('/contact', methods=['POST', 'GET'])
 def contact():
-    return render_template('contact.html')
+    if request.method == 'GET':
+        return render_template('contact.html')
+    elif request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+        message = request.form['message']
 
+        if name and email and phone and message:
+            # Email Logic here
 
-@app.route('/email', methods=['POST'])
-def email():
-    name = request.form['name']
-    email = request.form['email']
-    phone = request.form['phone']
-    message = request.form['car']
+            return jsonify(
+                {'response': "Thanks " + name + ", we'll get back to you ASAP"})
 
-    if name and email and phone and message:
         return jsonify(
-            {'name': "Thanks " + name + ", we'll get back to you ASAP"})
-
-    return jsonify(
-        {
-            'error': "Some fields seem to be missing"})
+            {'error': "Some fields seem to be missing"})
 
 
 @app.route('/process', methods=['POST'])
@@ -70,4 +69,4 @@ def error_405(e):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, TEMPLATES_AUTO_RELOAD=True)

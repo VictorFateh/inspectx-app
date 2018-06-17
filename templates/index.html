@@ -27,7 +27,8 @@
 
     <link href="/static/css/animatedzebra.css" rel="stylesheet">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css"
+          rel="stylesheet">
 
 </head>
 
@@ -46,7 +47,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/services">Services</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/about">About</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/contact">Contact Us</a>
@@ -59,7 +60,7 @@
 <!-- Header -->
 <header class="masthead bg-primary text-center">
     <div class="container">
-        <img class="img-fluid mb-5 d-block mx-auto" src="img/profile.png" alt="">
+        <!--<img style="width:13em;" class="img-fluid mb-5 d-block mx-auto" src="/static/img/profile.png" alt="inspectx logo">-->
         <h1 class="text-uppercase mb-0">Let's Buy a Car</h1>
         <hr class="star-dark">
         <h2 class="font-weight-light mb-0">Find - Inspect - Love</h2>
@@ -140,8 +141,11 @@
                         <hr>
                     </div>
                     <div class="control-group">
-                        <div class="form-group controls mb-0 pb-2">
-                            <input class="form-control" type="date" id="date">
+                        <!--<div class="form-group controls mb-0 pb-2">-->
+                        <!--<input class="form-control" type="date" id="date">-->
+                        <!--</div>-->
+                        <!-- DATETIMEPICKER TO FIX -->
+                        <div class="container" name="date" required="required" id="date">
                         </div>
                         <hr>
                     </div>
@@ -153,6 +157,7 @@
                     </div>
                 </form>
                 <div id="successAlert" class="alert alert-success text-center" role="alert" style="display:none;"></div>
+                <div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
                 <div class="scene text-center" id="scene" style="display:none;">
                     <img class="car" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/43033/car.svg" alt=""/>
                     <img class="poof" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/43033/poof.svg" alt=""/>
@@ -160,7 +165,7 @@
                     <em>LOADING...</em>
                 </div>
                 <br>
-                <div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
+
             </div>
         </div>
     </div>
@@ -189,6 +194,11 @@
 
 <!-- Custom scripts for this template -->
 <script src="/static/js/freelancer.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js
+"></script>
 
 <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 

@@ -10,19 +10,21 @@ $(document).ready(function() {
 				message : $('#message').val()
 			},
 			type : 'POST',
-			url : '/email'
+			url : '/contact'
 		})
-		.done(function(data) {
+		.done(function (data) {
 
 			if (data.error) {
-				$('email-form').show();
-				$('fail').show()
-			    $('success').hide();
+				$('#email-form').show();
+				$('#fail').text(data.error).show();
+			    $('#success').hide();
+			    $('#car-animation').hide()
 			}
 			else {
-			   $('email-form').hide();
-			   $('success').show();
-			   $('fail').hide();
+			    $('#car-animation').show()
+				$('#email-form').hide();
+			   $('#success').text(data.response).show();
+			   $('#fail').hide();
 			}
 
 		});
