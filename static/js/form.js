@@ -1,12 +1,22 @@
 $(document).ready(function() {
 
-    $('#date').datepicker({
-        maxViewMode: 2,
-        autoclose: true,
-        todayHighlight: true
+    $.ajaxSetup({
+        beforeSend:function() {
+            $("#sendMessageButton").text("");
+            $("#sendMessageButton").append('<div class="gauge-loader"></div>');
+        },
+        complete:function() {
+            $("#sendMessageButton").text('Request Inspection');
+        }
+    });
+
+    $('#datepicker').calendar({
+    today: true,
+    monthFirst: true
     });
 
 	$('form').on('submit', function(event) {
+	    document.getElementById("sendMessageButton")
 
 		$.ajax({
 			data : {
@@ -44,5 +54,4 @@ $(document).ready(function() {
 		event.preventDefault();
 
 	});
-
 });

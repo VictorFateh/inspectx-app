@@ -3,3 +3,4 @@ venv/
 env/
 lib/
 .idea/
+client_secret.json

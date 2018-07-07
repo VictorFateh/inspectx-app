@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, jsonify
+from inbound_upload import sheets
+from threading import Thread
 
 app = Flask(__name__)
 
@@ -25,7 +27,6 @@ def contact():
 
         if name and email and phone and message:
             # Email Logic here
-
             return jsonify(
                 {'response': "Thanks " + name + ", we'll get back to you ASAP"})
 
@@ -43,14 +44,15 @@ def process():
     date = request.form['date']
 
     if name and email and phone and car and location and date:
-        # GOOGLE SHEETS OR FIREBASE LOGIC HERE
-
+        package = {'name': name, 'email': email, 'phone': phone, 'car': car, 'location': location, 'date': date}
+        thr = Thread(target=sheets, args=[package])
+        thr.start()
         return jsonify(
             {'name': "Thanks for your submission " + name + ", we'll reach out to you at " + email + " shortly."})
 
     return jsonify(
         {
-            'error': "Oops, looks like there's a problem with some of fields. Double check that they're filled out correctly!"})
+            'error': "Looks like there's a problem with some of fields. Double check that they're filled out correctly!"})
 
 
 @app.errorhandler(500)
@@ -69,4 +71,5 @@ def error_405(e):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, TEMPLATES_AUTO_RELOAD=True)
+    # app.run(debug=True, TEMPLATES_AUTO_RELOAD=True)
+    app.run()

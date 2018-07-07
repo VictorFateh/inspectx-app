@@ -2,6 +2,10 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
+libraries:
+- name: ssl
+  version: latest
+
 handlers:
 - url: /favicon\.ico
   static_files: static/img/favicon.ico
@@ -10,3 +14,12 @@ handlers:
   static_dir: static
 - url: /.*
   script: main.app
+
+skip_files:
+  - ^env$
+  - ^\.git/.*
+  - ^(.*/)?#.*#$
+  - ^(.*/)?.*~$
+  - ^(.*/)?.*\.py[co]$
+  - ^(.*/)?.*/RCS/.*$
+  - ^(.*/)?\..*$
