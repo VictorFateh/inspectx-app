@@ -2,7 +2,7 @@
 
 **Webapp built with Flask, Bootstrap, and deployed on Google App Engine**
 
-**[Live website](https://www.inspect-x.com/)**
+**[Live website](https://inspectx-main-site.appspot.com/)**
 
 ## Requirements
 - [Google Cloud SDK](https://cloud.google.com/sdk/docs/) Python 2.7
