@@ -1,8 +1,16 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 from inbound_upload import sheets
 from threading import Thread
+import datetime
+import os
 
 app = Flask(__name__)
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'img/favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 @app.route('/')
@@ -41,10 +49,11 @@ def process():
     phone = request.form['phone']
     car = request.form['car']
     location = request.form['location']
+    service = request.form['service']
     date = request.form['date']
 
-    if name and email and phone and car and location and date:
-        package = {'name': name, 'email': email, 'phone': phone, 'car': car, 'location': location, 'date': date}
+    if name and email and phone and car and location and service and date:
+        package = [datetime.datetime.now().strftime('%M-%d-%Y %H:%M:%S'), name, email, phone, car, location, service, date]
         thr = Thread(target=sheets, args=[package])
         thr.start()
         return jsonify(
@@ -71,5 +80,6 @@ def error_405(e):
 
 
 if __name__ == '__main__':
-    # app.run(debug=True, TEMPLATES_AUTO_RELOAD=True)
-    app.run()
+    app.run(debug=True, TEMPLATES_AUTO_RELOAD=True)
+    # FOR EC2
+    # app.run(host="0.0.0.0", port='443')

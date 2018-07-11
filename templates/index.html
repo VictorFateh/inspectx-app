@@ -13,7 +13,8 @@
     <!-- Bootstrap core CSS -->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css"
+          rel="stylesheet" type="text/css"/>
 
 
     <!-- Custom fonts for this template -->
@@ -64,11 +65,12 @@
 <!-- Header -->
 <header class="masthead bg-primary text-center">
     <div class="container">
-        <!--<img style="width:13em;" class="img-fluid mb-5 d-block mx-auto" src="/static/img/profile.png" alt="inspectx logo">-->
-        <h1 class="text-uppercase mb-0">Let's Buy a Car</h1>
+        <img style="width:13em;" class="img-fluid mb-5 d-block mx-auto" src="/static/img/profile.png"
+             alt="inspectx logo">
+        <h1 class="text-uppercase mb-0">InspectX</h1>
         <hr class="star-dark">
         <!--<h2 class="font-weight-light mb-0">Find - Inspect - Love</h2>-->
-        <h2 class="font-weight-light mb-0">We'll get you an expert mechanical inspection on any car.</h2>
+        <h2 class="font-weight-bold mb-0">Inspect - Value - Sell</h2>
     </div>
 </header>
 
@@ -108,19 +110,23 @@
                     <div class="control-group">
                         <div class="form-group controls mb-0 pb-2">
                             <br>
-                            <select required class="form-control form-control-lg" id="car" rows="5" name="car"
-                                    required="required">
-                                <option value="">Pick a Vehicle</option>
-                                <option value="acura">Acura</option>
-                                <option value="Audi">Audi</option>
-                                <option value="BMW">BMW</option>
-                                <option value="Ferrari">Ferrari</option>
-                                <option value="Land Rover">Land Rover</option>
-                                <option value="Mercedes-Benz">Mercedes-Benz</option>
-                                <option value="Porsche">Porsche</option>
-                                <option value="Toyota">Toyota</option>
-                                <option value="Vintage porsche">Vintage Porsche</option>
-                            </select>
+                            <!--<select required class="form-control form-control-lg" id="car" rows="5" name="car"-->
+                            <!--required="required">-->
+                            <!--<option value="">Vehicle</option>-->
+                            <!--<option value="acura">Acura</option>-->
+                            <!--<option value="Audi">Audi</option>-->
+                            <!--<option value="BMW">BMW</option>-->
+                            <!--<option value="Ferrari">Ferrari</option>-->
+                            <!--<option value="Land Rover">Land Rover</option>-->
+                            <!--<option value="Mercedes-Benz">Mercedes-Benz</option>-->
+                            <!--<option value="Porsche">Porsche</option>-->
+                            <!--<option value="Toyota">Toyota</option>-->
+                            <!--<option value="Vintage porsche">Vintage Porsche</option>-->
+                            <!--</select>-->
+                            <select class="form-control-lg" name="car-years" id="car-years" required style="background-color: white;"></select>
+                            <select class="form-control-lg" name="car-makes" id="car-makes" required style="background-color: white;"></select>
+                            <select class="form-control-lg" name="car-models" id="car-models" required style="background-color: white;"></select>
+                            <select class="form-control-lg" name="car-model-trims" id="car-model-trims" required style="background-color: white;"></select>
                         </div>
                         <hr>
                     </div>
@@ -128,7 +134,7 @@
                         <div class="form-group controls mb-0 pb-2">
                             <select class="form-control form-control-lg" id="location" rows="5" required name="location"
                                     required="required">
-                                <option value="">Pick a Location</option>
+                                <option value="">Location</option>
                                 <option value="LA">Los Angeles Area</option>
                                 <option value="SF Bay">San Francisco Bay Area</option>
                                 <option value="Chicago">Chicago</option>
@@ -145,10 +151,30 @@
                         <hr>
                     </div>
                     <div class="control-group">
+                        <div class="input-group controls mb-0 pb-2">
+                            <select class="form-control form-control-lg" id="service" rows="5" required name="service"
+                                    required="required">
+                                <option value="">Services</option>
+                                <option value="Inspection">Inspection</option>
+                                <option value="Inspection + Valuation">Inspection + Valuation</option>
+                            </select>
+                            <div class="input-group-append">
+                                <!--<button class="btn btn-outline-secondary" type="button">?</button>-->
+                                <a id='poppy' tabindex="0" class="btn btn-outline-secondary" role="button"
+                                   data-toggle="popover"
+                                   data-trigger="focus" data-placement="left"
+                                   data-content="Info about services are on the about page!"><i
+                                        class="fa fa-question" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="control-group">
                         <div class="form-group controls mb-0" id="datepicker">
-                            <div class="ui input icon" style="width: 100%;">
+                            <div class="ui input icon" style="width: 100%; height: 3em;">
                                 <i class="calendar icon"></i>
-                                <input type="text" placeholder="Select Inspection Date" require="required" name="date" autocomplete="off" id="date">
+                                <input type="text" placeholder="Inspection Date" require="required" name="date"
+                                       autocomplete="off" id="date" style="">
                                 <br>
                             </div>
                         </div>
@@ -190,6 +216,10 @@
     </a>
 </div>
 
+
+<script type="text/javascript" src="http://www.carqueryapi.com/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
+
 <!-- Bootstrap core JavaScript -->
 <script src="/static/vendor/jquery/jquery.min.js"></script>
 <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -204,6 +234,8 @@
 <script src="{{ url_for('static', filename='vendor/datepicker/calendar.min.js') }}"></script>
 
 <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/vehicles.js') }}"></script>
 
 <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
 

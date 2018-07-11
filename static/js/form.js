@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+    $('.popover-dismiss').popover({
+        trigger: 'focus'
+    })
+    $('#poppy').popover({
+        container: '#inspection-form'
+    })
+
     $.ajaxSetup({
         beforeSend:function() {
             $("#sendMessageButton").text("");
@@ -23,8 +30,9 @@ $(document).ready(function() {
 				name : $('#name').val(),
 				email : $('#email').val(),
 				phone : $('#phone').val(),
-				car : $('#car').val(),
+                car : ($('#car-years').val() + ' ' + $('#car-makes').val() + ' ' + $('#car-models').val() + ' ' + $('#car-model-trims option:selected').text()),
 				location : $('#location').val(),
+				service : $('#service').val(),
 				date : $('#date').val()
 			},
 			type : 'POST',

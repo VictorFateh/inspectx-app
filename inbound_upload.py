@@ -5,30 +5,35 @@ range_ = 'RAW FORM!A2:G'
 
 value_range_body = {'values': full_pack.values()}
 '''
-import time
-import datetime
-import gspread
+
 from oauth2client.service_account import ServiceAccountCredentials
+import google
+import googleapiclient.discovery
+from google.oauth2 import service_account
 
-scope = ['https://spreadsheets.google.com/feeds',
-         'https://www.googleapis.com/auth/drive']
+# google.appengine.api.urlfetch.set_default_fetch_deadline(60)
 
-credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+scope = ['https://www.googleapis.com/auth/spreadsheets']
+# credentials = ServiceAccountCredentials.from_json_keyfile_name('templates/client_secret.json', scope)
+SPREADSHEET_ID = '1pOuH7Dz55DTbRiON_jPuBFi_60ab4V8CposinKh6p3w'
+RANGE_NAME = 'RAW FORM!A2:G'
 
-gc = gspread.authorize(credentials)
+SERVICE_ACCOUNT_FILE = 'client_secret.json'
+
+credentials = service_account.Credentials.from_service_account_file(
+    SERVICE_ACCOUNT_FILE, scopes=scope)
 
 
 def sheets(package):
-    sh = gc.open_by_key('1pOuH7Dz55DTbRiON_jPuBFi_60ab4V8CposinKh6p3w')
-    worksheet = sh.worksheet("RAW FORM")
+    service = googleapiclient.discovery.build('sheets', 'v4', credentials=credentials)
 
-    return sh.worksheets()
+    values = [package]
 
+    body = {
+        'values': values
+    }
 
-def old_sheets(package):
-    full_pack = package
-    ts = time.time()
-    full_pack['submission_time'] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+    result = service.spreadsheets().values().append(spreadsheetId=SPREADSHEET_ID, range=RANGE_NAME, body=body,
+                                                    valueInputOption='USER_ENTERED').execute()
 
-    # return full_pack.values()
-
+    print(result)
