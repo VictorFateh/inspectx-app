@@ -27,6 +27,8 @@
 
     <link href="/static/css/animatedsend.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="/static/css/gauge.css">
+
 </head>
 
 <body id="page-top">
@@ -57,71 +59,72 @@
 
 <header class="masthead text-center">
     <div class="container">
-        <h2 class="font-weight-light mb-0">Any more questions? Drop us a line below.</h2>
+        <h2 class="font-weight-light mb-0">Any more questions?</h2>
         <br><br>
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <form name="sentMessage" id="email-form" novalidate="novalidate">
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                            <label>Name</label>
-                            <input class="form-control" id="name" name="name" type="text" placeholder="Name"
-                                   required="required"
-                                   data-validation-required-message="Please enter your name.">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                            <label>Email Address</label>
-                            <input class="form-control" id="email" name="email" type="email" placeholder="Email Address"
-                                   required="required"
-                                   data-validation-required-message="Please enter your email address.">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                            <label>Phone Number</label>
-                            <input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone Number"
-                                   required="required"
-                                   data-validation-required-message="Please enter your phone number.">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                            <label>Message</label>
-                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Message"
-                                      required="required"
-                                      data-validation-required-message="Please enter a message."></textarea>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary btn-xl" style="color: black;"
-                                id="sendMessageButton">Send
-                        </button>
-                    </div>
-                </form>
-                <div id="success" class="alert alert-success text-center" role="alert" style="display:none;"></div>
-                <div class="loading-window" id="car-animation" style="display: none;">
-                    <div class="car">
-                        <div class="strike"></div>
-                        <div class="strike strike2"></div>
-                        <div class="strike strike3"></div>
-                        <div class="strike strike4"></div>
-                        <div class="strike strike5"></div>
-                        <div class="car-detail spoiler"></div>
-                        <div class="car-detail back"></div>
-                        <div class="car-detail center"></div>
-                        <div class="car-detail center1"></div>
-                        <div class="car-detail front"></div>
-                        <div class="car-detail wheel"></div>
-                        <div class="car-detail wheel wheel2"></div>
-                    </div>
-                </div>
-                <br>
-                <div id="fail" class="alert alert-danger" role="alert" style="display:none;"></div>
-            </div>
-        </div>
+        <h4><a class="mailto" href="mailto:frank@inspect-x.com">Email us</a></h4>
+        <!--<div class="row">-->
+            <!--<div class="col-lg-8 mx-auto">-->
+                <!--<form name="sentMessage" id="email-form" novalidate="novalidate">-->
+                    <!--<div class="control-group">-->
+                        <!--<div class="form-group floating-label-form-group controls mb-0 pb-2">-->
+                            <!--<label>Name</label>-->
+                            <!--<input class="form-control" id="name" name="name" type="text" placeholder="Name"-->
+                                   <!--required="required"-->
+                                   <!--data-validation-required-message="Please enter your name.">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="control-group">-->
+                        <!--<div class="form-group floating-label-form-group controls mb-0 pb-2">-->
+                            <!--<label>Email Address</label>-->
+                            <!--<input class="form-control" id="email" name="email" type="email" placeholder="Email Address"-->
+                                   <!--required="required"-->
+                                   <!--data-validation-required-message="Please enter your email address.">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="control-group">-->
+                        <!--<div class="form-group floating-label-form-group controls mb-0 pb-2">-->
+                            <!--<label>Phone Number</label>-->
+                            <!--<input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone Number"-->
+                                   <!--required="required"-->
+                                   <!--data-validation-required-message="Please enter your phone number.">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="control-group">-->
+                        <!--<div class="form-group floating-label-form-group controls mb-0 pb-2">-->
+                            <!--<label>Message</label>-->
+                            <!--<textarea class="form-control" id="message" name="message" rows="5" placeholder="Message"-->
+                                      <!--required="required"-->
+                                      <!--data-validation-required-message="Please enter a message."></textarea>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<br>-->
+                    <!--<div class="form-group text-center">-->
+                        <!--<button type="submit" class="btn btn-primary btn-xl" style="color: black;"-->
+                                <!--id="sendMessageButton">Send-->
+                        <!--</button>-->
+                    <!--</div>-->
+                <!--</form>-->
+                <!--<div id="success" class="alert alert-success text-center" role="alert" style="display:none;"></div>-->
+                <!--<div class="loading-window" id="car-animation" style="display: none;">-->
+                    <!--<div class="car">-->
+                        <!--<div class="strike"></div>-->
+                        <!--<div class="strike strike2"></div>-->
+                        <!--<div class="strike strike3"></div>-->
+                        <!--<div class="strike strike4"></div>-->
+                        <!--<div class="strike strike5"></div>-->
+                        <!--<div class="car-detail spoiler"></div>-->
+                        <!--<div class="car-detail back"></div>-->
+                        <!--<div class="car-detail center"></div>-->
+                        <!--<div class="car-detail center1"></div>-->
+                        <!--<div class="car-detail front"></div>-->
+                        <!--<div class="car-detail wheel"></div>-->
+                        <!--<div class="car-detail wheel wheel2"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<br>-->
+                <!--<div id="fail" class="alert alert-danger" role="alert" style="display:none;"></div>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 </header>
 

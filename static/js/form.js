@@ -18,9 +18,23 @@ $(document).ready(function() {
     });
 
     $('#datepicker').calendar({
+    disableMinute: true,
     today: true,
-    monthFirst: true
+    monthFirst: true,
+    closable: true,
+    popupOptions: {
+      position: 'top left',
+      hideOnScroll: false
+    }
     });
+
+    var carquery = new CarQuery();
+    carquery.init();
+    carquery.setFilters( {sold_in_us:true} );
+    carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
+    carquery.initMakeModelTrimList('make-list', 'model-list', 'trim-list', 'trim-data-list');
+    carquery.year_select_min=1980;
+    carquery.year_select_max=2019;
 
 	$('form').on('submit', function(event) {
 	    document.getElementById("sendMessageButton")

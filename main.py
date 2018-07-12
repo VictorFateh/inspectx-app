@@ -34,9 +34,10 @@ def contact():
         message = request.form['message']
 
         if name and email and phone and message:
-            # Email Logic here
+            ## FIGURE OUT EMAIL FORM
+
             return jsonify(
-                {'response': "Thanks " + name + ", we'll get back to you ASAP"})
+                {'response': "Thanks " + name.split()[0] + ", we'll get back to you ASAP"})
 
         return jsonify(
             {'error': "Some fields seem to be missing"})
@@ -53,7 +54,8 @@ def process():
     date = request.form['date']
 
     if name and email and phone and car and location and service and date:
-        package = [datetime.datetime.now().strftime('%M-%d-%Y %H:%M:%S'), name, email, phone, car, location, service, date]
+        package = [datetime.datetime.now().strftime('%M-%d-%Y %H:%M:%S'), name, email, phone, car, location, service,
+                   date]
         thr = Thread(target=sheets, args=[package])
         thr.start()
         return jsonify(
@@ -82,4 +84,4 @@ def error_405(e):
 if __name__ == '__main__':
     app.run(debug=True, TEMPLATES_AUTO_RELOAD=True)
     # FOR EC2
-    # app.run(host="0.0.0.0", port='443')
+    # app.run(host="0.0.0.0", port='80')

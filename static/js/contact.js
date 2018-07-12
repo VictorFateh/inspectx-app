@@ -1,6 +1,16 @@
 $(document).ready(function() {
 
-	$('form').on('submit', function(event) {
+    $.ajaxSetup({
+        beforeSend:function() {
+            $("#sendMessageButton").text("");
+            $("#sendMessageButton").append('<div class="gauge-loader"></div>');
+        },
+        complete:function() {
+            $("#sendMessageButton").text('Send');
+        }
+    });
+
+	$('#email-form').on('submit', function(event) {
 
 		$.ajax({
 			data : {
