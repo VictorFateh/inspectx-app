@@ -1,5 +1,7 @@
 # InspectX Webapp
 
-**Flask Webapp deployed on AWS EC2**
+**InspectX makes inspecting, valuing, and selling your car as easy as filling a form**
+
+Flask + Gunicorn + EC2
 
 **[Live website](https://inspectx-main-site.appspot.com/)**
