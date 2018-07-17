@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var carquery = new CarQuery();
+     var carquery = new CarQuery();
      carquery.init();
 
      //Optional: initialize the year, make, model, and trim drop downs by providing their element IDs
@@ -20,16 +20,15 @@ $(document).ready(function() {
         trigger: 'focus'
     })
     $('#poppy').popover({
-        container: '#inspection-form'
+        container: '#value-form'
     })
 
     $.ajaxSetup({
         beforeSend:function() {
-            $("#sendMessageButton").text("");
-            $("#sendMessageButton").append('<div class="gauge-loader"></div>');
+            $("#valuation-submit").text("Loading...");
         },
         complete:function() {
-            $("#sendMessageButton").text('Request Inspection');
+            $("#valuation-submit").text('Value my car!');
         }
     });
 
@@ -45,7 +44,7 @@ $(document).ready(function() {
     });
 
 	$('form').on('submit', function(event) {
-	    document.getElementById("sendMessageButton")
+	    document.getElementById("valuation-submit")
 
 		$.ajax({
 			data : {
@@ -54,29 +53,23 @@ $(document).ready(function() {
 				phone : $('#phone').val(),
                 car : $('#car-years option:selected').text() + ' ' + $('#car-makes option:selected').text() + ' ' + $('#car-models option:selected').text() + ' ' + $('#car-model-trims option:selected').text(),
 				location : $('#location').val(),
-				service : 'PPI',
+				service : 'Valuation',
 				date : $('#date').val()
 			},
 			type : 'POST',
-			url : '/process'
+			url : '/value'
 		})
 		.done(function(data) {
 
 			if (data.error) {
 				$('#errorAlert').text(data.error).show();
 				$('#successAlert').hide();
-				$('#title-start').hide();
-				$('#title-error').show();
-				$('#title-complete').hide();
 			}
 			else {
 				$('#successAlert').text(data.name).show();
 				$('#scene').show();
 				$('#errorAlert').hide();
-				$('#inspection-form').hide();
-				$('#title-start').hide();
-				$('#title-error').hide();
-				$('#title-complete').show();
+				$('#value-form').hide();
 			}
 
 		});

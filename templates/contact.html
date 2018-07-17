@@ -13,6 +13,9 @@
     <!-- Bootstrap core CSS -->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css"
+          rel="stylesheet" type="text/css"/>
+
     <!-- Custom fonts for this template -->
     <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -46,11 +49,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/value">Value my car</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/about">About</a>
                 </li>
                 <li class="active nav-item mx-0 mx-lg-1">
-                    <a class="active nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/contact">Contact
-                        Us</a>
+                    <a class="active nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/contact">Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -198,7 +203,7 @@
 <!-- Custom scripts for this template -->
 <script src="/static/js/freelancer.min.js"></script>
 
-<script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+<!--<script src="{{ url_for('static', filename='js/contact.js') }}"></script>-->
 
 </body>
 

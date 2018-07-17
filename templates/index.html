@@ -52,6 +52,9 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/value">Value my car</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/about">About</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
@@ -70,7 +73,7 @@
         <h1 class="text-uppercase mb-0">InspectX</h1>
         <hr class="star-dark">
         <!--<h2 class="font-weight-light mb-0">Find - Inspect - Love</h2>-->
-        <h2 class="font-weight-bold mb-0">Inspect - Value - Sell</h2>
+        <h2 class="mb-0">Inspect - Value - Sell</h2>
     </div>
 </header>
 
@@ -151,25 +154,6 @@
                         <hr>
                     </div>
                     <div class="control-group">
-                        <div class="input-group controls mb-0 pb-2">
-                            <select class="form-control form-control-lg" id="service" rows="5" required name="service"
-                                    required="required">
-                                <option value="">Services</option>
-                                <option value="Inspection">Inspection</option>
-                                <option value="Inspection + Valuation">Inspection + Valuation</option>
-                            </select>
-                            <div class="input-group-append">
-                                <!--<button class="btn btn-outline-secondary" type="button">?</button>-->
-                                <a id='poppy' tabindex="0" class="btn btn-outline-secondary" role="button"
-                                   data-toggle="popover"
-                                   data-trigger="focus" data-placement="left"
-                                   data-content="Info about services are on the about page!"><i
-                                        class="fa fa-question" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="control-group">
                         <div class="form-group controls mb-0" id="datepicker">
                             <div class="ui input icon" style="width: 100%; height: 3em;">
                                 <i class="calendar icon"></i>
@@ -216,9 +200,8 @@
     </a>
 </div>
 
-
-<script type="text/javascript" src="http://www.carqueryapi.com/js/jquery.min.js"></script>
-<script type="text/javascript" src="http://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
+<script type="text/javascript" src="https://www.carqueryapi.com/js/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
 
 <!-- Bootstrap core JavaScript -->
 <script src="/static/vendor/jquery/jquery.min.js"></script>
@@ -234,8 +217,6 @@
 <script src="{{ url_for('static', filename='vendor/datepicker/calendar.min.js') }}"></script>
 
 <script src="{{ url_for('static', filename='js/form.js') }}"></script>
-
-<script src="{{ url_for('static', filename='js/vehicles.js') }}"></script>
 
 <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
 

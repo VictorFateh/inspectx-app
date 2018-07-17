@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Value - InspectX</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css"
+          rel="stylesheet" type="text/css"/>
+
+    <!-- Custom fonts for this template -->
+    <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="/static/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/freelancer.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/">InspectX</a>
+        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button"
+                data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="active nav-item mx-0 mx-lg-1">
+                    <a class="active nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/value">Value my
+                        car</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/about">About</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/contact">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="masthead">
+    <div class="container">
+        <br><br>
+        <h2 class="text-center text-uppercase">Value my car</h2>
+        <br>
+        <hr class="mb-5">
+        <div class="row" id="val-info">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 ml-auto text-center">
+                <p class="lead">Kelley Blue Book only values an average example of your car.</p><h3>We don’t stop
+                there.</h3><p class="lead"><br>We’ll
+                    tell you exactly what your particular car is worth, considering its options and mechanical
+                    condition. Order a valuation service today!</p>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="container">
+            <br><br>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <form name="sentMessage" id="value-form" novalidate="novalidate">
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>Name</label>
+                                <input class="form-control" id="name" type="text" placeholder="Name" required="required"
+                                       data-validation-required-message="Please enter your name.">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>Email Address</label>
+                                <input class="form-control" id="email" type="email" placeholder="Email Address"
+                                       required="required"
+                                       data-validation-required-message="Please enter your email address.">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                                <label>Phone Number</label>
+                                <input class="form-control" id="phone" type="tel" placeholder="Phone Number"
+                                       required="required">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group controls mb-0 pb-2">
+                                <br>
+                                <!--<select required class="form-control form-control-lg" id="car" rows="5" name="car"-->
+                                        <!--required="required">-->
+                                    <!--<option value="">Vehicle</option>-->
+                                    <!--<option value="acura">Acura</option>-->
+                                    <!--<option value="Audi">Audi</option>-->
+                                    <!--<option value="BMW">BMW</option>-->
+                                    <!--<option value="Ferrari">Ferrari</option>-->
+                                    <!--<option value="Land Rover">Land Rover</option>-->
+                                    <!--<option value="Mercedes-Benz">Mercedes-Benz</option>-->
+                                    <!--<option value="Porsche">Porsche</option>-->
+                                    <!--<option value="Toyota">Toyota</option>-->
+                                    <!--<option value="Vintage porsche">Vintage Porsche</option>-->
+                                <!--</select>-->
+                                <select class="form-control-lg" name="car-years" id="car-years" required style="background-color: white;"></select>
+                                <select class="form-control-lg" name="car-makes" id="car-makes" required style="background-color: white;"></select>
+                                <select class="form-control-lg" name="car-models" id="car-models" required style="background-color: white;"></select>
+                                <select class="form-control-lg" name="car-model-trims" id="car-model-trims" required style="background-color: white;"></select>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group controls mb-0 pb-2">
+                                <select class="form-control form-control-lg" id="location" rows="5" required
+                                        name="location"
+                                        required="required">
+                                    <option value="">Location</option>
+                                    <option value="LA">Los Angeles Area</option>
+                                    <option value="SF Bay">San Francisco Bay Area</option>
+                                    <option value="Chicago">Chicago</option>
+                                    <option value="South Florida">South Florida</option>
+                                    <option value="Greater NY">Greater New York City Area</option>
+                                    <option value="Raleigh-Durham Area">Raleigh-Durham Area</option>
+                                    <option value="Greater Dallas Area">Greater Boston Area</option>
+                                    <option value="Greater San Diego Area">Alabama</option>
+                                    <option value="New Jersey">New Jersey</option>
+                                    <option value="st louis">St. Louis, MO</option>
+                                    <option value="Springfield">Springfield, IL</option>
+                                </select>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="control-group">
+                            <div class="form-group controls mb-0" id="datepicker">
+                                <div class="ui input icon" style="width: 100%; height: 3em;">
+                                    <i class="calendar icon"></i>
+                                    <input type="text" placeholder="When should we come check out your car?" require="required" name="date"
+                                           autocomplete="off" id="date" style="">
+                                    <br>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <br>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary btn-xl" style="color: black;"
+                                    id="valuation-submit">Value my car!
+                            </button>
+                            <div class="loader" id='loading' style="display:none;"></div>
+                        </div>
+                    </form>
+                    <div id="successAlert" class="alert alert-success text-center" role="alert"
+                         style="display:none;"></div>
+                    <div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
+                    <br>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="copyright py-4 text-center text-white">
+    <div class="container">
+        <small>Copyright &copy; InspectX 2018</small>
+    </div>
+</div>
+
+<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+<div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+</div>
+
+<script type="text/javascript" src="https://www.carqueryapi.com/js/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="/static/js/freelancer.min.js"></script>
+
+<script src="{{ url_for('static', filename='js/value.js') }}"></script>
+
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+
+
+</body>
+
+</html>

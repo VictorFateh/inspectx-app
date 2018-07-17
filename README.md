@@ -1,5 +1,6 @@
 # InspectX Webapp
 
-**Flask Webapp deployed on AWS EC2**
+**Flask Webapp deployed GAE (flex)**
 
-**[Live website](https://inspectx-main-site.appspot.com/)**
+
+**[Live website](http://www.inspect-x.com//)**

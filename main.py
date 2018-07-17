@@ -4,26 +4,53 @@ from threading import Thread
 import datetime
 import os
 
-app = Flask(__name__)
+
+application = Flask(__name__)
 
 
-@app.route('/favicon.ico')
+@application.route('/favicon.ico')
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),
+    return send_from_directory(os.path.join(application.root_path, 'static'),
                                'img/favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
-@app.route('/')
+@application.route('/')
 def index():
     return render_template('index.html')
 
 
-@app.route('/about')
+@application.route('/about')
 def services():
     return render_template('about.html')
 
 
-@app.route('/contact', methods=['POST', 'GET'])
+@application.route('/value', methods=['POST', 'GET'])
+def value():
+    if request.method == 'GET':
+        return render_template('value.html')
+    elif request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+        car = request.form['car']
+        location = request.form['location']
+        service = request.form['service']
+        date = request.form['date']
+
+        if name and email and phone and car and location and date:
+            package = [datetime.datetime.now().strftime('%M-%d-%Y %H:%M:%S'), name, email, phone, car, location, service,
+                       date]
+            value_thr = Thread(target=sheets, args=[package])
+            value_thr.start()
+            return jsonify(
+                {'name': "Thanks " + name + ", we'll confirm your valuation shortly!"})
+
+        return jsonify(
+            {
+                'error': "Double check all the inputs are filled out"})
+
+
+@application.route('/contact', methods=['POST', 'GET'])
 def contact():
     if request.method == 'GET':
         return render_template('contact.html')
@@ -43,7 +70,7 @@ def contact():
             {'error': "Some fields seem to be missing"})
 
 
-@app.route('/process', methods=['POST'])
+@application.route('/process', methods=['POST'])
 def process():
     name = request.form['name']
     email = request.form['email']
@@ -53,7 +80,7 @@ def process():
     service = request.form['service']
     date = request.form['date']
 
-    if name and email and phone and car and location and service and date:
+    if name and email and phone and car and location and date:
         package = [datetime.datetime.now().strftime('%M-%d-%Y %H:%M:%S'), name, email, phone, car, location, service,
                    date]
         thr = Thread(target=sheets, args=[package])
@@ -66,22 +93,20 @@ def process():
             'error': "Looks like there's a problem with some of fields. Double check that they're filled out correctly!"})
 
 
-@app.errorhandler(500)
+@application.errorhandler(500)
 def error_500(e):
     return render_template('error.html', value='500', description=e)
 
 
-@app.errorhandler(404)
+@application.errorhandler(404)
 def error_404(e):
     return render_template('error.html', value='404', description=e)
 
 
-@app.errorhandler(405)
+@application.errorhandler(405)
 def error_405(e):
     return render_template('error.html', value='405', description=e)
 
 
 if __name__ == '__main__':
-    app.run(debug=True, TEMPLATES_AUTO_RELOAD=True)
-    # FOR EC2
-    # app.run(host="0.0.0.0", port='80')
+    application.run(debug=True)
