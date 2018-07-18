@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var carquery = new CarQuery();
+     var carquery = new CarQuery();
      carquery.init();
 
      //Optional: initialize the year, make, model, and trim drop downs by providing their element IDs
@@ -33,15 +33,8 @@ $(document).ready(function() {
         }
     });
 
-    $('#datepicker').calendar({
-    disableMinute: true,
-    today: true,
-    monthFirst: true,
-    closable: true,
-    popupOptions: {
-      position: 'top left',
-      hideOnScroll: false
-    }
+    $('#date').datetimepicker({
+                format: 'MM/DD/YYYY'
     });
 
 	$('form').on('submit', function(event) {

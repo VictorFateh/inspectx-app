@@ -28,19 +28,12 @@ $(document).ready(function() {
             $("#valuation-submit").text("Loading...");
         },
         complete:function() {
-            $("#valuation-submit").text('Value my car!');
+            $("#valuation-submit").text('Schedule Valuation');
         }
     });
 
-    $('#value-datepicker').calendar({
-    disableMinute: true,
-    today: true,
-    monthFirst: true,
-    closable: true,
-    popupOptions: {
-      position: 'top left',
-      hideOnScroll: false
-    }
+    $('#date').datetimepicker({
+                format: 'MM/DD/YYYY'
     });
 
 	$('form').on('submit', function(event) {
@@ -64,12 +57,14 @@ $(document).ready(function() {
 			if (data.error) {
 				$('#errorAlert').text(data.error).show();
 				$('#successAlert').hide();
+				$('#val-info').show();
 			}
 			else {
 				$('#successAlert').text(data.name).show();
 				$('#scene').show();
 				$('#errorAlert').hide();
 				$('#value-form').hide();
+				$('#val-info').hide();
 			}
 
 		});

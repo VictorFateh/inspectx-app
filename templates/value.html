@@ -13,9 +13,6 @@
     <!-- Bootstrap core CSS -->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css"
-          rel="stylesheet" type="text/css"/>
-
     <!-- Custom fonts for this template -->
     <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -27,6 +24,10 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/freelancer.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css"/>
+
 
 </head>
 
@@ -72,8 +73,8 @@
                 <h3>We don’t stop
                     there.</h3>
                 <p class="lead"><br>We’ll
-                    tell you exactly what your particular car is worth, considering its options and mechanical
-                    condition. Order a valuation service today!</p>
+                    tell you exactly what your particular car is worth, taking into account its options and mechanical
+                    condition. Order a valuation service today, and we'll help you maximize your vehicle sale!</p>
             </div>
             <div class="col-lg-2"></div>
         </div>
@@ -107,19 +108,6 @@
                         <div class="control-group">
                             <div class="form-group controls mb-0 pb-2">
                                 <br>
-                                <!--<select required class="form-control form-control-lg" id="car" rows="5" name="car"-->
-                                <!--required="required">-->
-                                <!--<option value="">Vehicle</option>-->
-                                <!--<option value="acura">Acura</option>-->
-                                <!--<option value="Audi">Audi</option>-->
-                                <!--<option value="BMW">BMW</option>-->
-                                <!--<option value="Ferrari">Ferrari</option>-->
-                                <!--<option value="Land Rover">Land Rover</option>-->
-                                <!--<option value="Mercedes-Benz">Mercedes-Benz</option>-->
-                                <!--<option value="Porsche">Porsche</option>-->
-                                <!--<option value="Toyota">Toyota</option>-->
-                                <!--<option value="Vintage porsche">Vintage Porsche</option>-->
-                                <!--</select>-->
                                 <select class="form-control-lg" name="car-years" id="car-years" required
                                         style="background-color: white;"></select>
                                 <select class="form-control-lg" name="car-makes" id="car-makes" required
@@ -153,13 +141,13 @@
                             <hr>
                         </div>
                         <div class="control-group">
-                            <div class="form-group controls mb-0" id="value-datepicker">
-                                <div class="ui input icon" style="width: 100%; height: 3em;">
-                                    <i class="calendar icon"></i>
-                                    <input type="text" placeholder="When should we come check out your car?"
-                                           require="required" name="date"
-                                           autocomplete="off" id="date" style="">
-                                    <br>
+                            <div class="form-group controls mb-0">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <input type="text" class="form-control datetimepicker-input" id="date"
+                                               data-toggle="datetimepicker" data-target="#date" style="height: 2.8em;"
+                                               placeholder="Inspection date" name="date" autocomplete="off"/>
+                                    </div>
                                 </div>
                             </div>
                             <hr>
@@ -167,7 +155,7 @@
                         <br>
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary btn-xl" style="color: black;"
-                                    id="valuation-submit">Value my car!
+                                    id="valuation-submit">Schedule Valuation
                             </button>
                             <div class="loader" id='loading' style="display:none;"></div>
                         </div>
@@ -212,8 +200,9 @@
 
 <script src="{{ url_for('static', filename='js/value.js') }}"></script>
 
-<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
 </body>
 
