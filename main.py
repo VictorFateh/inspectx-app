@@ -10,7 +10,7 @@ application = Flask(__name__)
 
 # FORCES REROUTE TO HTTPS
 # REMOVE FOR LOCAL DEV
-# sslify = SSLify(application)
+sslify = SSLify(application)
 
 
 @application.route('/favicon.ico')
@@ -114,4 +114,4 @@ def error_405(e):
 
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    application.run()
