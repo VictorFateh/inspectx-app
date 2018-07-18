@@ -32,7 +32,7 @@ $(document).ready(function() {
         }
     });
 
-    $('#datepicker').calendar({
+    $('#value-datepicker').calendar({
     disableMinute: true,
     today: true,
     monthFirst: true,

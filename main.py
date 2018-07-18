@@ -3,9 +3,14 @@ from inbound_upload import sheets
 from threading import Thread
 import datetime
 import os
+from flask_sslify import SSLify
 
 
 application = Flask(__name__)
+
+# FORCES REROUTE TO HTTPS
+# REMOVE FOR LOCAL DEV
+sslify = SSLify(application)
 
 
 @application.route('/favicon.ico')
@@ -109,4 +114,4 @@ def error_405(e):
 
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    application.run()
