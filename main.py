@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, jsonify, send_from_directory
-from inbound_upload import sheets
-from threading import Thread
 import datetime
 import os
+from threading import Thread
+
+from flask import Flask, render_template, request, jsonify, send_from_directory
 from flask_sslify import SSLify
 
+from inbound_upload import sheets
 
 application = Flask(__name__)
 
@@ -43,7 +44,8 @@ def value():
         date = request.form['date']
 
         if name and email and phone and car and location and date:
-            package = [datetime.datetime.now().strftime('%M-%d-%Y %H:%M:%S'), name, email, phone, car, location, service,
+            package = [datetime.datetime.now().strftime('%M-%d-%Y %H:%M:%S'), name, email, phone, car, location,
+                       service,
                        date]
             value_thr = Thread(target=sheets, args=[package])
             value_thr.start()
@@ -95,7 +97,7 @@ def process():
 
     return jsonify(
         {
-            'error': "Looks like there's a problem with some of fields. Double check that they're filled out correctly!"})
+            'error': "Check that all the fields are filled out correctly!"})
 
 
 @application.errorhandler(500)

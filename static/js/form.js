@@ -16,13 +16,6 @@ $(document).ready(function() {
      carquery.year_select_min=1990;
      carquery.year_select_max=2018;
 
-    $('.popover-dismiss').popover({
-        trigger: 'focus'
-    })
-    $('#poppy').popover({
-        container: '#inspection-form'
-    })
-
     $.ajaxSetup({
         beforeSend:function() {
             $("#sendMessageButton").text("");
@@ -58,8 +51,6 @@ $(document).ready(function() {
 			if (data.error) {
 				$('#errorAlert').text(data.error).show();
 				$('#successAlert').hide();
-				$('#title-start').hide();
-				$('#title-error').show();
 				$('#title-complete').hide();
 			}
 			else {
@@ -68,7 +59,6 @@ $(document).ready(function() {
 				$('#errorAlert').hide();
 				$('#inspection-form').hide();
 				$('#title-start').hide();
-				$('#title-error').hide();
 				$('#title-complete').show();
 			}
 

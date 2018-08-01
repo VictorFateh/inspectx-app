@@ -16,13 +16,6 @@ $(document).ready(function() {
      carquery.year_select_min=1990;
      carquery.year_select_max=2018;
 
-    $('.popover-dismiss').popover({
-        trigger: 'focus'
-    })
-    $('#poppy').popover({
-        container: '#value-form'
-    })
-
     $.ajaxSetup({
         beforeSend:function() {
             $("#valuation-submit").text("Loading...");
