@@ -1,7 +1,6 @@
 import datetime
 import os
 from threading import Thread
-
 from flask import Flask, render_template, request, jsonify, send_from_directory
 from flask_sslify import SSLify
 
@@ -30,6 +29,11 @@ def services():
     return render_template('about.html')
 
 
+@application.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+
 @application.route('/value', methods=['POST', 'GET'])
 def value():
     if request.method == 'GET':
@@ -55,26 +59,6 @@ def value():
         return jsonify(
             {
                 'error': "Double check all the inputs are filled out"})
-
-
-@application.route('/contact', methods=['POST', 'GET'])
-def contact():
-    if request.method == 'GET':
-        return render_template('contact.html')
-    elif request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        phone = request.form['phone']
-        message = request.form['message']
-
-        if name and email and phone and message:
-            ## FIGURE OUT EMAIL FORM
-
-            return jsonify(
-                {'response': "Thanks " + name.split()[0] + ", we'll get back to you ASAP"})
-
-        return jsonify(
-            {'error': "Some fields seem to be missing"})
 
 
 @application.route('/process', methods=['POST'])

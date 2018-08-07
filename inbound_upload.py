@@ -1,27 +1,40 @@
-'''
-spreadsheet_id = '1pOuH7Dz55DTbRiON_jPuBFi_60ab4V8CposinKh6p3w'
+import ConfigParser
 
-range_ = 'RAW FORM!A2:G'
-
-value_range_body = {'values': full_pack.values()}
-'''
-
-from oauth2client.service_account import ServiceAccountCredentials
-import google
 import googleapiclient.discovery
+import requests
 from google.oauth2 import service_account
 
-# google.appengine.api.urlfetch.set_default_fetch_deadline(60)
+config = ConfigParser.ConfigParser()
+config.read('config.ini')
 
-scope = ['https://www.googleapis.com/auth/spreadsheets']
-# credentials = ServiceAccountCredentials.from_json_keyfile_name('templates/client_secret.json', scope)
-SPREADSHEET_ID = '1pOuH7Dz55DTbRiON_jPuBFi_60ab4V8CposinKh6p3w'
-RANGE_NAME = 'RAW FORM!A2:G'
-
+MAILGUN_DOMAIN_NAME = config.get('MAILGUN', 'MAILGUN_DOMAIN_NAME')
+MAILGUN_API_KEY = config.get('MAILGUN', 'MAILGUN_API_KEY')
+BCC = config.get('MAILGUN', 'BCC')
+SPREADSHEET_ID = config.get('SHEETS', 'SPREADSHEET_ID')
+RANGE_NAME = config.get('SHEETS', 'RANGE_NAME')
+SCOPE = ['https://www.googleapis.com/auth/spreadsheets']
 SERVICE_ACCOUNT_FILE = 'client_secret.json'
 
 credentials = service_account.Credentials.from_service_account_file(
-    SERVICE_ACCOUNT_FILE, scopes=scope)
+    SERVICE_ACCOUNT_FILE, scopes=SCOPE)
+
+
+# params [timestamp, name, email, phone, car, location, service, date]
+def confirmation_email(package):
+    email_body = open("static/email/email_html_body.html", "r").read().format(package[1], package[6], package[4])
+    email_head = open("static/email/email_html_head.html", "r").read()
+    email_full = email_head + email_body
+    url = 'https://api.mailgun.net/v3/{}/messages'.format(MAILGUN_DOMAIN_NAME)
+    auth = ('api', MAILGUN_API_KEY)
+    data = {
+        'from': 'Inspect-X <customer@{}>'.format(MAILGUN_DOMAIN_NAME),
+        'to': package[2],
+        'bcc': BCC,
+        'subject': '{} Confirmation'.format(package[6]),
+        'html': email_full
+    }
+
+    response = requests.post(url, auth=auth, data=data)
 
 
 def sheets(package):
@@ -35,5 +48,6 @@ def sheets(package):
 
     result = service.spreadsheets().values().append(spreadsheetId=SPREADSHEET_ID, range=RANGE_NAME, body=body,
                                                     valueInputOption='USER_ENTERED').execute()
+    confirmation_email(package)
 
     print(result)
