@@ -29,6 +29,13 @@ $(document).ready(function() {
                 format: 'MM/DD/YYYY'
     });
 
+    var placesAutocomplete = places({
+        container: document.querySelector('#location'),
+        type: 'city',
+        aroundLatLngViaIP: false,
+        countries: ['us'],
+    });
+
 	$('form').on('submit', function(event) {
 	    document.getElementById("valuation-submit")
 

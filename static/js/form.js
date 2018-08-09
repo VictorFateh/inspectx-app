@@ -30,6 +30,13 @@ $(document).ready(function() {
                 format: 'MM/DD/YYYY'
     });
 
+    var placesAutocomplete = places({
+        container: document.querySelector('#location'),
+        type: 'city',
+        aroundLatLngViaIP: false,
+        countries: ['us'],
+    });
+
 	$('form').on('submit', function(event) {
 	    document.getElementById("sendMessageButton")
 
@@ -40,7 +47,7 @@ $(document).ready(function() {
 				phone : $('#phone').val(),
                 car : $('#car-years option:selected').text() + ' ' + $('#car-makes option:selected').text() + ' ' + $('#car-models option:selected').text() + ' ' + $('#car-model-trims option:selected').text(),
 				location : $('#location').val(),
-				service : 'PPI',
+				service : 'Inspection',
 				date : $('#date').val()
 			},
 			type : 'POST',

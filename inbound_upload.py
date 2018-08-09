@@ -21,20 +21,21 @@ credentials = service_account.Credentials.from_service_account_file(
 
 # params [timestamp, name, email, phone, car, location, service, date]
 def confirmation_email(package):
-    email_body = open("static/email/email_html_body.html", "r").read().format(package[1], package[6], package[4])
+    email_body = open("static/email/email_html_body.html", "r").read().format(package[1], package[6].lower(), package[4])
     email_head = open("static/email/email_html_head.html", "r").read()
     email_full = email_head + email_body
     url = 'https://api.mailgun.net/v3/{}/messages'.format(MAILGUN_DOMAIN_NAME)
     auth = ('api', MAILGUN_API_KEY)
     data = {
-        'from': 'Inspect-X <customer@{}>'.format(MAILGUN_DOMAIN_NAME),
+        'from': 'InspectX Vehicle Inspections <inspections@{}>'.format(MAILGUN_DOMAIN_NAME),
         'to': package[2],
-        'bcc': BCC,
+        'bcc': 'victorfateh@yahoo.com',
         'subject': '{} Confirmation'.format(package[6]),
         'html': email_full
     }
 
     response = requests.post(url, auth=auth, data=data)
+    response.raise_for_status()
 
 
 def sheets(package):

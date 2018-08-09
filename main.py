@@ -1,16 +1,17 @@
 import datetime
 import os
 from threading import Thread
+
 from flask import Flask, render_template, request, jsonify, send_from_directory
-from flask_sslify import SSLify
 
 from inbound_upload import sheets
 
 application = Flask(__name__)
 
+
 # FORCES REROUTE TO HTTPS
 # REMOVE FOR LOCAL DEV
-sslify = SSLify(application)
+# sslify = SSLify(application)
 
 
 @application.route('/favicon.ico')
@@ -77,7 +78,7 @@ def process():
         thr = Thread(target=sheets, args=[package])
         thr.start()
         return jsonify(
-            {'name': "Thanks for your submission " + name + ", we'll reach out to you at " + email + " shortly."})
+            {'name': "Thanks " + name + ", we've sent you a confirmation email at " + email + "."})
 
     return jsonify(
         {
@@ -100,4 +101,4 @@ def error_405(e):
 
 
 if __name__ == '__main__':
-    application.run()
+    application.run(debug=True, )

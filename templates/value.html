@@ -128,6 +128,14 @@
                             </div>
                         </div>
                         <div class="control-group">
+                            <div class="form-group floating-label-form-group controls mb-9 pb-2">
+                                <label>City</label>
+                                <input type="search" id="location" class="form-control" placeholder="City"
+                                       required="required"/>
+
+                            </div>
+                        </div>
+                        <div class="control-group">
                             <div class="form-group controls mb-0 pb-2">
                                 <br>
                                 <select class="form-control-lg" name="car-years" id="car-years" required
@@ -138,27 +146,6 @@
                                         style="background-color: white;"></select>
                                 <select class="form-control-lg" name="car-model-trims" id="car-model-trims" required
                                         style="background-color: white;"></select>
-                            </div>
-                            <hr>
-                        </div>
-                        <div class="control-group">
-                            <div class="form-group controls mb-0 pb-2">
-                                <select class="form-control form-control-lg" id="location" rows="5" required
-                                        name="location"
-                                        required="required">
-                                    <option value="">Location</option>
-                                    <option value="LA">Los Angeles Area</option>
-                                    <option value="SF Bay">San Francisco Bay Area</option>
-                                    <option value="Chicago">Chicago</option>
-                                    <option value="South Florida">South Florida</option>
-                                    <option value="Greater NY">Greater New York City Area</option>
-                                    <option value="Raleigh-Durham Area">Raleigh-Durham Area</option>
-                                    <option value="Greater Dallas Area">Greater Boston Area</option>
-                                    <option value="Greater San Diego Area">Alabama</option>
-                                    <option value="New Jersey">New Jersey</option>
-                                    <option value="st louis">St. Louis, MO</option>
-                                    <option value="Springfield">Springfield, IL</option>
-                                </select>
                             </div>
                             <hr>
                         </div>
@@ -177,7 +164,7 @@
                         <br>
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary btn-xl" style="color: black;"
-                                    id="valuation-submit">Schedule Valuation
+                                    id="valuation-submit">Request Inspection
                             </button>
                             <div class="loader" id='loading' style="display:none;"></div>
                         </div>
@@ -209,6 +196,8 @@
 <script type="text/javascript" src="https://www.carqueryapi.com/js/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/places.js@1.9.0"></script>
+
 <!-- Bootstrap core JavaScript -->
 <script src="/static/vendor/jquery/jquery.min.js"></script>
 <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -220,11 +209,11 @@
 <!-- Custom scripts for this template -->
 <script src="/static/js/freelancer.min.js"></script>
 
-<script src="{{ url_for('static', filename='js/value.js') }}"></script>
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<script src="{{ url_for('static', filename='js/value.js') }}"></script>
 
 </body>
 
