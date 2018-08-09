@@ -3,15 +3,15 @@ import os
 from threading import Thread
 
 from flask import Flask, render_template, request, jsonify, send_from_directory
+from flask_sslify import SSLify
 
 from inbound_upload import sheets
 
 application = Flask(__name__)
 
-
-# FORCES REROUTE TO HTTPS
+# FORCE SSL
 # REMOVE FOR LOCAL DEV
-# sslify = SSLify(application)
+sslify = SSLify(application)
 
 
 @application.route('/favicon.ico')
@@ -85,6 +85,11 @@ def process():
             'error': "Check that all the fields are filled out correctly!"})
 
 
+@application.route('/sitemap.xml')
+def sitemap():
+    return application.send_static_file('sitemap.xml')
+
+
 @application.errorhandler(500)
 def error_500(e):
     return render_template('error.html', value='500', description=e)
@@ -101,4 +106,4 @@ def error_405(e):
 
 
 if __name__ == '__main__':
-    application.run(debug=True, )
+    application.run()
