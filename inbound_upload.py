@@ -29,7 +29,7 @@ def confirmation_email(package):
     data = {
         'from': 'InspectX Vehicle Inspections <inspections@{}>'.format(MAILGUN_DOMAIN_NAME),
         'to': package[2],
-        'bcc': 'victorfateh@yahoo.com',
+        'bcc': BCC,
         'subject': '{} Confirmation'.format(package[6]),
         'html': email_full
     }
