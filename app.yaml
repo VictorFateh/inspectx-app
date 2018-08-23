@@ -1,9 +1,10 @@
-runtime: python
-env: flex
-entrypoint: gunicorn -b :$PORT main:application
+runtime: python27
+api_version: 1
+threadsafe: true
 
-runtime_config:
-  python_version: 2
-
-manual_scaling:
-  instances: 1
+handlers:
+- url: /.*
+  script: main.app
+- url: /favicon\.ico
+  static_files: /img/favicon.ico
+  upload: favicon\.ico

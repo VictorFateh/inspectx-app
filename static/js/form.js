@@ -4,8 +4,6 @@ $(document).ready(function() {
     car_query.init();
     car_query.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
     car_query.initMakeModelTrimList('make-list', 'model-list', 'trim-list', 'trim-data-list');
-    car_query.year_select_min=1990;
-    car_query.year_select_max=2018;
 
     $.ajaxSetup({
         beforeSend:function() {

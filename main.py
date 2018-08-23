@@ -1,41 +1,33 @@
 import datetime
-import os
 from threading import Thread
 
-from flask import Flask, render_template, request, jsonify, send_from_directory
+from flask import Flask, render_template, request, jsonify
 from flask_sslify import SSLify
 
 from inbound_upload import sheets
-
-application = Flask(__name__)
+app = Flask(__name__)
 
 # FORCE SSL
 # REMOVE FOR LOCAL DEV
-sslify = SSLify(application)
+sslify = SSLify(app)
 
 
-@application.route('/favicon.ico')
-def favicon():
-    return send_from_directory(os.path.join(application.root_path, 'static'),
-                               'img/favicon.ico', mimetype='image/vnd.microsoft.icon')
-
-
-@application.route('/')
+@app.route('/')
 def index():
     return render_template('index.html')
 
 
-@application.route('/about')
+@app.route('/about')
 def services():
     return render_template('about.html')
 
 
-@application.route('/contact')
+@app.route('/contact')
 def contact():
     return render_template('contact.html')
 
 
-@application.route('/value', methods=['POST', 'GET'])
+@app.route('/value', methods=['POST', 'GET'])
 def value():
     if request.method == 'GET':
         return render_template('value.html')
@@ -62,7 +54,7 @@ def value():
                 'error': "Double check all the inputs are filled out"})
 
 
-@application.route('/process', methods=['POST'])
+@app.route('/process', methods=['POST'])
 def process():
     name = request.form['name']
     email = request.form['email']
@@ -85,25 +77,25 @@ def process():
             'error': "Check that all the fields are filled out correctly!"})
 
 
-@application.route('/sitemap.xml')
+@app.route('/sitemap.xml')
 def sitemap():
-    return application.send_static_file('sitemap.xml')
+    return app.send_static_file('sitemap.xml')
 
 
-@application.errorhandler(500)
+@app.errorhandler(500)
 def error_500(e):
     return render_template('error.html', value='500', description=e)
 
 
-@application.errorhandler(404)
+@app.errorhandler(404)
 def error_404(e):
     return render_template('error.html', value='404', description=e)
 
 
-@application.errorhandler(405)
+@app.errorhandler(405)
 def error_405(e):
     return render_template('error.html', value='405', description=e)
 
 
 if __name__ == '__main__':
-    application.run()
+    app.run()

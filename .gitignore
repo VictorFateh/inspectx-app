@@ -4,3 +4,4 @@ env/
 .idea/
 client_secret.json
 config.ini
+lib/
